@@ -1,0 +1,825 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Homework 1 - Programming Section &mdash; CSE 571 - HW 1  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to CSE 571 Fall 2019 - HW1!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CSE 571 - HW 1
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Homework 1 - Programming Section</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#plagiarism-warning">Plagiarism Warning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grading-policy">Grading Policy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#instructions">Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-search-folder">Setting up <strong>Search</strong> Folder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-setting">Environment Setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#moving-turtlebot">Moving TurtleBot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementing-search-algorithms">Implementing Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-search-algorithms">Testing Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tips-and-suggestions">Tips and Suggestions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#api">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#class-state">class State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#class-helper">class Helper</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CSE 571 - HW 1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Homework 1 - Programming Section</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="homework-1-programming-section">
+<h1>Homework 1 - Programming Section<a class="headerlink" href="#homework-1-programming-section" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to Programming section of Homework 1 for CSE 571 - Fall 2019.</p>
+<p>This section will test your understanding of Search techniques as covered in the class.</p>
+<p>Homework is due at 11:59 PM on September 24, 2019. Please plan your submission early to avoid last moment hiccups.</p>
+<div class="section" id="plagiarism-warning">
+<h2>Plagiarism Warning<a class="headerlink" href="#plagiarism-warning" title="Permalink to this headline">¶</a></h2>
+<p>Powerful copy-detection systems will be used as part of grading, so please <strong>DO NOT</strong> submit/use any piece of code that is not <strong>your own</strong> work. These systems can easily catch instances where users change variable names, etc. from copied code.</p>
+<p>If you are stuck at any point, you can approach the professor or TA for help.</p>
+</div>
+<div class="section" id="tasks">
+<h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">[30 points] Use the turtlebot environment setup in HW0 along with the helper code we provide (see <a class="reference external" href="#instructions">Section “Intructions”</a>) to implement the following search algorithms.</p>
+<ul class="simple">
+<li>BFS</li>
+<li>UCS</li>
+<li>GBFS</li>
+<li>A*</li>
+</ul>
+<p>Be sure to check the <a class="reference external" href="#instructions">instructions section</a> as it includes a number of tips that will significantly simplify your task. You need to follow the instructions strictly to ensure that your assignment can be graded by the auto-grader. <strong>Custom grading requests will not be entertained</strong>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p class="first">[15 points] Plot a bar-plot for the time taken to search for a path to the goal by each of the following algorithms:</p>
+<blockquote>
+<div><ul class="simple">
+<li>BFS</li>
+<li>UCS</li>
+<li>GBFS with Manhattan-distance heuristic .</li>
+<li>A* with Manhattan-distance heuristic.</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">X-axis should represent the grid dimension.</div>
+<div class="line">Y-axis should represent the time taken as an average of 5 runs.</div>
+<div class="line">Each bar in the bar plot should correspond to one algorithm.</div>
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">[15 points + 10 (bonus) points] Construct a different heuristic (say h<sub>s</sub>) for this problem. Describe h<sub>s</sub> as a function which maps states to real numbers.</p>
+<blockquote>
+<div><p>Plot a bar-plot similar to previous task with the following 4 variations:</p>
+<ul class="simple">
+<li>GBFS with Manhattan-distance heuristic .</li>
+<li>GBFS with h<sub>s</sub>.</li>
+<li>A* with Manhattan-distance heuristic.</li>
+<li>A* with h<sub>s</sub>.</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">X-axis should represent the grid dimension.</div>
+<div class="line">Y-axis should represent the time taken as an average of 5 runs.</div>
+<div class="line">Each bar in the bar plot should correspond to one variation as mentioned above.</div>
+</div>
+<p>You’ll receive <strong>2 bonus points</strong> if and only if GBFS or A* using h<sub>s</sub> outperforms the corresponding algorithm with Manhattan-distance heuristic.</p>
+<p><strong>1 point will be deducted</strong> if test runs of GBFS or A* with h<sub>s</sub> does not outperform the Manhattan-distance heuristic but the graph submitted shows otherwise.</p>
+<p>Please refer to Instructions section to understand how to setup the environment.</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="grading-policy">
+<h2>Grading Policy<a class="headerlink" href="#grading-policy" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>If the submission is late by 24 hours, you are entitled to 30% to the score you’ll get for the assignment.</li>
+<li>No points will be given if the assignment is submitted later than 24 hours.</li>
+<li>In order to get full points for part 1, your final submitted code should run without any input or configuration from the TA. If any changes are required to get your submitted code to run, points will be deducted in a manner proportional to the number of changes needed. If you follow the instructions your code will run without any inputs from the TA.</li>
+<li>Parts 2 and 3 will only be graded if Part 1 is correct.</li>
+<li>Homework will be graded on Ubuntu 16.04 machines setup with ROS Kinetic, and Python 2.7. Use the setup from HW0 to ensure your code runs as intended with this configuration.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="instructions">
+<h1>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setting-up-search-folder">
+<h2>Setting up <strong>Search</strong> Folder<a class="headerlink" href="#setting-up-search-folder" title="Permalink to this headline">¶</a></h2>
+<p>We assume that you have completed the setup as instructed in Homework 0.
+Refer to <a class="reference external" href="https://aair-lab.github.io/teaching/571_f19_hw/hw0.html">Homework 0 Webpage</a> for details.</p>
+<ol class="arabic">
+<li><p class="first">Copy the “search” folder you downloaded from canvas to ~/catkin_ws/src/</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp -r &lt;download_path&gt;/search/ ~/catkin_ws/src/
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Change permission of all scripts in search folder to make them executable.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod u+x ~/catkin_ws/src/search/*.py
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Run catkin_make from your catkin workspace.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/catkin_ws <span class="o">&amp;&amp;</span> catkin_make
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Source the setup.bash</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/catkin_ws/devel/setup.bash
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="environment-setting">
+<h2>Environment Setting<a class="headerlink" href="#environment-setting" title="Permalink to this headline">¶</a></h2>
+<p>Refer the image below to see how a sample maze environment looks like. The goal is the red color can. All other cans are obstacles that TurtleBot has to avoid to reach the goal.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/cans.png"><img alt="A sample maze" src="_images/cans.png" style="width: 687.5px; height: 438.0px;" /></a>
+</div>
+<p>Some of the terms that we use throughout the assignment are:</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Grid Dimensions: Size of the square grid.</dt>
+<dd><div class="first last admonition note">
+<p class="first admonition-title">Note</p>
+<p>Actual grid size used for navigation is different from what is seen in Gazebo environment. Each of the square seen in Gazebo is divided into 4 equal squares.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last figure" id="id1">
+<img alt="_images/grid.png" src="_images/grid.png" />
+<p class="caption"><span class="caption-text">Fig 1. Grid visible in Gazebo</span></p>
+</div>
+</td>
+<td><div class="first last figure" id="id2">
+<img alt="_images/grid_actual.png" src="_images/grid_actual.png" />
+<p class="caption"><span class="caption-text">Fig 2. Actual navigation grid</span></p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="last">Hence, if you have to go from point A to B in Gazebo environment using ‘MoveF’ action, you will have to give ‘MoveF’ command twice. If you give the ‘MoveF’ command once, the TurtleBot will stop at T.</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">Goal: A can of red color.</p>
+</li>
+<li><p class="first">Obstacles: Smaller cans obstructing the TurtleBot’s path.</p>
+</li>
+<li><p class="first">Actions: Actions includes {MoveF, MoveB, TurnCW, TurnCCW}. Move actions move the turtlebot forward or backward along an edge, and Turn actions rotate it clockwise or counterclockwise.</p>
+</li>
+<li><dl class="first docutils">
+<dt>State:  State of the turtlebot represented as (x, y, <img class="math" src="_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/>) where x and y are coordinates, <img class="math" src="_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/> is an orientation in {NORTH, SOUTH, EAST, WEST}.</dt>
+<dd><div class="first last figure">
+<a class="reference internal image-reference" href="_images/orientation.png"><img alt="A sample maze" src="_images/orientation.png" style="width: 255.5px; height: 174.3px;" /></a>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<p>Use the following settings for evaluation and generating graphs. These parameters should be entered as input to server.py.</p>
+<table border="1" class="docutils" id="id3">
+<caption><span class="caption-text">Combinations of grid size and obstacle count on which submissions will be graded.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Grid Dimension</th>
+<th class="head">Obstacle count</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>16</td>
+</tr>
+<tr class="row-even"><td>8</td>
+<td>58</td>
+</tr>
+<tr class="row-odd"><td>16</td>
+<td>218</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="moving-turtlebot">
+<h2>Moving TurtleBot<a class="headerlink" href="#moving-turtlebot" title="Permalink to this headline">¶</a></h2>
+<p>We are providing a sample file random_walk.py that you can inspect and run to see how the system works. It can found at ~/catkin_ws/src/search/scripts/</p>
+<p>Test your setup using the following steps with the random-walk example.</p>
+<ol class="arabic">
+<li><p class="first">On a terminal, run roscore.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roscore
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">In a new terminal session, run the server file (located at ~/catkin_ws/src/search/scripts/server.py). Use the arguments to provide size of the grid, number of obstacles and random seed.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search server.py
+</pre></div>
+</div>
+<p>Use – help option to see how to pass arguments to the server.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rosrun search server.py --help
+usage: server.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-d <span class="m">5</span><span class="o">]</span> <span class="o">[</span>-n <span class="m">15</span><span class="o">]</span> <span class="o">[</span>-s <span class="m">32</span><span class="o">]</span>
+
+optional arguments:
+  -h, --help  show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -d <span class="m">5</span>        <span class="k">for</span> providing dimension of the grid
+  -n <span class="m">15</span>       <span class="k">for</span> providing no. of obstacles to be added in the grid
+  -s <span class="m">32</span>       <span class="k">for</span> providing random seed
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Launch the maze in a new terminal.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch search maze.launch
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Run the move_tbot3.py file in a new terminal. It enables the movement of TurtleBot3.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search move_tbot3.py
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Run the random_walk.py file in a new terminal.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search random_walk.py
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="implementing-search-algorithms">
+<h2>Implementing Search Algorithms<a class="headerlink" href="#implementing-search-algorithms" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Modify the search methods in search_algorithms.py located at ~/catkin_ws/src/search/scripts/. We have provided a basic template where you should write your code. You can inspect random_walk.py as mentioned in the previous section to see how to make changes to search_algorithms.py.</p>
+</li>
+<li><p class="first">Do not modify any other file. Make all the changes you need in search_algorithms.py only.</p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Modifying search_algorithm.py</strong>:</dt>
+<dd><ul class="first last">
+<li><p class="first">Do not modify the function signature of existing methods.</p>
+</li>
+<li><p class="first">Do not modify the return statements at the end of existing methods.</p>
+</li>
+<li><p class="first">You can create your own methods inside the file.</p>
+</li>
+<li><p class="first">Which methods to modify? bfs(), ucs(), gbfs(), astar()</p>
+</li>
+<li><dl class="first docutils">
+<dt>Each of these four method returns <strong>action_list</strong>, the list of actions that TurtleBot has to perform to reach from initial state to goal state.</dt>
+<dd><div class="first last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A sample list can look like [‘MoveF’, ‘TurnCW’, ‘MoveF’, ‘TurnCCW’, ‘MoveB’, ‘TurnCCW’, ‘MoveF’]. This list should be empty if there is no path from intial state to goal state.</p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Use the following helper functions defined in ~/catkin_ws/src/search/scripts/problem.py.</p>
+<blockquote>
+<div><ul class="simple">
+<li>get_initial_state() – Returns the initial state of the turtlebot.</li>
+<li>get_goal_state() – Returns the goal state for the TurtleBot.</li>
+<li>is_goal_state(curr_state) – Returns if curr_state is the goal state or not.</li>
+<li>get_actions() – Returns the list of all actions that the TurtleBot can perform. Keep in mind that not all of them may be executable from the curr_state.</li>
+<li>get_successor(curr_state) – Returns an ordered dictionary of actions {action_i : (state_i, cost_i)} such that applying action_i on curr_state results in state_i and it incurs a cost cost_i.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Break ties during expansion in the order of dictionary elements returned by get_successor(). Since this is an ordered dictionary, the order will be preserved unlike normal python dictionary.</p>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd><p class="first last">Assume that a call to get_successor(initial_state) returns {a1: (s1, 2), a2: (s2, 2)}. Now we have 2 nodes in fringe with equal cost, so we will choose <strong>a1</strong> for expansion as it appears before a2 in the dictionary.</p>
+</dd>
+</dl>
+</div>
+<p>To see how each of them work, visit <a class="reference external" href="#class-helper">API -&gt; Class Helper</a>  on the left hand panel.</p>
+</div></blockquote>
+</li>
+<li><p class="first">You can use external APIs for data structures like stack, queue, priority queue, etc.</p>
+</li>
+<li><p class="first">You can implement your own Manhattan Distance Heuristic function, or you can use the function given in server.py.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="testing-search-algorithms">
+<h2>Testing Search Algorithms<a class="headerlink" href="#testing-search-algorithms" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">On a terminal, run roscore.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roscore
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">In a new terminal session, run the server file (located at ~/catkin_ws/src/search/scripts/server.py). Use the arguments to provide size of the grid, number of obstacles and random seed.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search server.py
+</pre></div>
+</div>
+<p>Use – help option to see how to pass arguments to the server.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rosrun search server.py  --help
+usage: server.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-d <span class="m">5</span><span class="o">]</span> <span class="o">[</span>-n <span class="m">15</span><span class="o">]</span> <span class="o">[</span>-s <span class="m">32</span><span class="o">]</span>
+
+optional arguments:
+  -h, --help  show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -d <span class="m">5</span>        <span class="k">for</span> providing dimension of the grid
+  -n <span class="m">15</span>       <span class="k">for</span> providing no. of obstacles to be added in the grid
+  -s <span class="m">32</span>       <span class="k">for</span> providing random seed
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Launch the maze in a new terminal.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch search maze.launch
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Run the move_tbot3.py file in a new terminal. It enables the movement of TurtleBot3.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search move_tbot3.py
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Run the search_algorithm.py file in a new terminal with suitable argument (bfs, ucs, gbfs, astar).</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun search search_algorithm.py -a &lt;algorithm_name&gt;
+</pre></div>
+</div>
+<p>Use – help option to see how to pass arguments to search_algorithm.py script. To use a custom heuristic function with gbfs or astar, pass the flag -c. No value is needed.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rosrun search search_algorithm.py --help
+usage: search_algorithm.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-a bfs<span class="o">]</span> <span class="o">[</span>-c<span class="o">]</span>
+
+optional arguments:
+  -h, --help  show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -a bfs      Please mention algorithm to use. Possible <span class="nv">arguments</span> <span class="o">=</span> <span class="o">{</span>bfs, ucs,
+              gbfs, astar<span class="o">}</span>. Default value is bfs.
+  -c          Use custom heuristic <span class="k">function</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Passing -c to search_algorithm.py sets a flag “custom_heuristic” to True. In gbfs() or astar() methods, check this flag’s value to call the correct heuristic function.</p>
+<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">custom_heuristic</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+  <span class="c1"># use your custom heuristic function</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="c1"># use Manhattan heuristic function</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="tips-and-suggestions">
+<h2>Tips and Suggestions<a class="headerlink" href="#tips-and-suggestions" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Test your algorithm with smaller grid or smaller number of obstacles to see if it works as expected.</p>
+</li>
+<li><p class="first">Kill the launched servers and nodes and restart from step 2 onwards when you start a new run so that the Turtlebot3 is reset to its initial state. This will also be useful when you collect data to plot the graphs.</p>
+</li>
+<li><p class="first">Since the obstacles and mazes are generated dynamically, sometimes it is possible that there is no path from initial state to goal state. If your algorithm returned empty action_list, check once if there is path from initial state to goal state.</p>
+</li>
+<li><p class="first">Sometimes the robot starts diverging from the path and starts rotating very fast. This is caused by a bug that we are trying to resolve. Please kill the launched servers and nodes and restart from step 2 onwards if you notice such an issue.</p>
+</li>
+<li><p class="first">You need not start a new run to record running time if there is no path between initial state and goal state. The time taken for this case should also be considered while taking average of 5 runs.</p>
+</li>
+<li><p class="first">Remember to source the setup.bash file in each of the new terminal you start.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/catkin_ws/devel/setup.bash
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">At times, the TurtleBot takes some time to perform an action, so wait for some time if no movement is visible.</p>
+</li>
+<li><p class="first">Check the discussion page on Canvas to see if the problem you are facing is already answered. If not, start a new discussion.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="class-state">
+<h2>class State<a class="headerlink" href="#class-state" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="problem.State">
+<em class="property">class </em><code class="descclassname">problem.</code><code class="descname">State</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>orientation</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#State"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.State" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class defines the state of the TurtleBot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<em>float</em>) – current x-cordinate of turtlebot</li>
+<li><strong>y</strong> (<em>float</em>) – current x-cordinate of turtlebot</li>
+<li><strong>orientation</strong> (<em>float</em>) – current orientation of turtlebot, can be either NORTH, SOUTH, EAST, WEST</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="class-helper">
+<h2>class Helper<a class="headerlink" href="#class-helper" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="problem.Helper">
+<em class="property">class </em><code class="descclassname">problem.</code><code class="descname">Helper</code><a class="reference internal" href="_modules/problem.html#Helper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class provides the methods used to control TurtleBot.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">init_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_init_state</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="problem.Helper.get_actions">
+<code class="descname">get_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns the list of all actions that a TurtleBot can perform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of actions</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list(str)</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">possible_actions</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_actions</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The code calling this API should check if the actions are applicable from the current state or not.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.get_goal_state">
+<code class="descname">get_goal_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_goal_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_goal_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls returns the goal state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Goal state</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#problem.State" title="problem.State">State</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">()</span>
+<span class="n">goal_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_goal_state</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">initial_state</span> <span class="o">==</span> <span class="n">goal_state</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s2">&quot;TurtleBot is already at Goal&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default orientation returnded is EAST. Any piece of code using this method should ignore the orientation to check for goal state.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.get_initial_state">
+<code class="descname">get_initial_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_initial_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls get_initial_state service to recive the initial state of the turtlebot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Initial state of the TurtleBot</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#problem.State" title="problem.State">State</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.get_successor">
+<code class="descname">get_successor</code><span class="sig-paren">(</span><em>curr_state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_successor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_successor" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls get_successor service with current state as input and receives a dictionary as output. Possible actions are key to this dictionary and the value of each action is the state that can be reached by applying that action and the corresponding cost.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>curr_state</strong> (<a class="reference internal" href="#problem.State" title="problem.State"><em>State</em></a>) – current state of the TurtleBot</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An <strong>ordered</strong> dictionary of actions {action_i : (state_i, cost_i)} such that applying action_i on curr_state results in state_i and it incurs a cost cost_i.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">OrderedDict {str: tuple(<a class="reference internal" href="#problem.State" title="problem.State">State</a>, float)}</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">()</span>
+<span class="n">possible_successors_dict</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_successor</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Process the output of this function in the same order it is returned. If you need to break ties between multiple nodes, use the dictionary element that appears earlier in the dictionary returned by get_successor(). Since this is an ordered dictionary, the order will be preserved unlike normal python dictionary.</p>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd>Assume that a call to get_successor(initial_state) returns {a1: (s1, 2), a2: (s2, 2)}. Now we have 2 nodes in fringe with equal cost, so we will choose <strong>a1</strong> for expansion as it appears before a2 in the dictionary.</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.is_goal_state">
+<code class="descname">is_goal_state</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.is_goal_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.is_goal_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls is_goal_state service to check if the current state is the goal state or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>state</strong> (<a class="reference internal" href="#problem.State" title="problem.State"><em>State</em></a>) – current state of the TurtleBot</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">1 if input state is the goal state, 0 otherwise</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">is_goal_state</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;TurtleBot is already at Goal&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to CSE 571 Fall 2019 - HW1!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, AAIR Lab, ASU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

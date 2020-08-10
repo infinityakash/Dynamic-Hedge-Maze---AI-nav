@@ -1,0 +1,377 @@
+Homework 1 - Programming Section
+=================================
+
+Welcome to Programming section of Homework 1 for CSE 571 - Fall 2019.
+
+This section will test your understanding of Search techniques as covered in the class.
+
+Homework is due at 11:59 PM on September 24, 2019. Please plan your submission early to avoid last moment hiccups.
+
+==================
+Plagiarism Warning
+==================
+Powerful copy-detection systems will be used as part of grading, so please **DO NOT** submit/use any piece of code that is not **your own** work. These systems can easily catch instances where users change variable names, etc. from copied code.
+
+If you are stuck at any point, you can approach the professor or TA for help.
+
+=================
+Tasks
+=================
+#.	[30 points] Use the turtlebot environment setup in HW0 along with the helper code we provide (see `Section "Intructions" <#instructions>`_) to implement the following search algorithms. 
+
+	* BFS
+	* UCS
+	* GBFS
+	* A*
+
+	Be sure to check the `instructions section <#instructions>`_ as it includes a number of tips that will significantly simplify your task. You need to follow the instructions strictly to ensure that your assignment can be graded by the auto-grader. **Custom grading requests will not be entertained**.
+
+	|
+
+
+#. [15 points] Plot a bar-plot for the time taken to search for a path to the goal by each of the following algorithms: 
+
+	* BFS
+	* UCS
+	* GBFS with Manhattan-distance heuristic .
+	* A* with Manhattan-distance heuristic. 
+
+	| 
+	| X-axis should represent the grid dimension.
+	| Y-axis should represent the time taken as an average of 5 runs.
+	| Each bar in the bar plot should correspond to one algorithm.
+	|
+
+#. [15 points + 10 (bonus) points] Construct a different heuristic (say h\ :sub:`s`\ ) for this problem. Describe h\ :sub:`s`\  as a function which maps states to real numbers. 
+
+	Plot a bar-plot similar to previous task with the following 4 variations:
+
+	* GBFS with Manhattan-distance heuristic .
+	* GBFS with h\ :sub:`s`\.
+	* A* with Manhattan-distance heuristic. 
+	* A* with h\ :sub:`s`\.
+
+	| 
+	| X-axis should represent the grid dimension.
+	| Y-axis should represent the time taken as an average of 5 runs.
+	| Each bar in the bar plot should correspond to one variation as mentioned above.
+
+	You'll receive **2 bonus points** if and only if GBFS or A* using h\ :sub:`s`\  outperforms the corresponding algorithm with Manhattan-distance heuristic.
+
+	**1 point will be deducted** if test runs of GBFS or A* with h\ :sub:`s`\  does not outperform the Manhattan-distance heuristic but the graph submitted shows otherwise.
+
+	Please refer to Instructions section to understand how to setup the environment.
+
+
+=============================
+Grading Policy
+=============================
+
+#. If the submission is late by 24 hours, you are entitled to 30% to the score you'll get for the assignment.
+#. No points will be given if the assignment is submitted later than 24 hours.
+#. In order to get full points for part 1, your final submitted code should run without any input or configuration from the TA. If any changes are required to get your submitted code to run, points will be deducted in a manner proportional to the number of changes needed. If you follow the instructions your code will run without any inputs from the TA.
+#. Parts 2 and 3 will only be graded if Part 1 is correct.
+#. Homework will be graded on Ubuntu 16.04 machines setup with ROS Kinetic, and Python 2.7. Use the setup from HW0 to ensure your code runs as intended with this configuration.
+
+
+Instructions
+=================
+
+=============================
+Setting up **Search** Folder
+=============================
+
+We assume that you have completed the setup as instructed in Homework 0.
+Refer to `Homework 0 Webpage <https://aair-lab.github.io/teaching/571_f19_hw/hw0.html>`_ for details.
+
+#. Copy the "search" folder you downloaded from canvas to ~/catkin_ws/src/
+
+	.. code-block:: bash
+
+	   cp -r <download_path>/search/ ~/catkin_ws/src/
+
+#. Change permission of all scripts in search folder to make them executable.
+
+	.. code-block:: bash
+
+	   chmod u+x ~/catkin_ws/src/search/*.py
+
+#. Run catkin_make from your catkin workspace.
+
+	.. code-block:: bash
+
+	   cd ~/catkin_ws && catkin_make
+
+#. Source the setup.bash
+
+	.. code-block:: bash
+
+		source ~/catkin_ws/devel/setup.bash
+
+
+=============================
+Environment Setting
+=============================
+
+Refer the image below to see how a sample maze environment looks like. The goal is the red color can. All other cans are obstacles that TurtleBot has to avoid to reach the goal.
+
+.. figure:: ./images/cans.png
+		:scale: 50 %
+		:alt: A sample maze
+
+Some of the terms that we use throughout the assignment are:
+
+#. Grid Dimensions: Size of the square grid.
+	.. note ::
+		Actual grid size used for navigation is different from what is seen in Gazebo environment. Each of the square seen in Gazebo is divided into 4 equal squares. 
+
+		.. list-table::
+			:header-rows: 0
+
+			* - .. figure:: ./images/grid.png
+
+			      Fig 1. Grid visible in Gazebo
+
+			  - .. figure:: ./images/grid_actual.png
+
+			      Fig 2. Actual navigation grid
+
+		Hence, if you have to go from point A to B in Gazebo environment using 'MoveF' action, you will have to give 'MoveF' command twice. If you give the 'MoveF' command once, the TurtleBot will stop at T.
+
+
+
+#. Goal: A can of red color.
+#. Obstacles: Smaller cans obstructing the TurtleBot's path.
+#. Actions: Actions includes {MoveF, MoveB, TurnCW, TurnCCW}. Move actions move the turtlebot forward or backward along an edge, and Turn actions rotate it clockwise or counterclockwise.
+#. State:  State of the turtlebot represented as (x, y, :math:`\phi`) where x and y are coordinates, :math:`\phi` is an orientation in {NORTH, SOUTH, EAST, WEST}.  
+	.. figure:: ./images/orientation.png
+			:scale: 35 %
+			:alt: A sample maze
+
+Use the following settings for evaluation and generating graphs. These parameters should be entered as input to server.py.
+
+.. list-table:: Combinations of grid size and obstacle count on which submissions will be graded.
+   :header-rows: 1
+
+   * - Grid Dimension
+     - Obstacle count
+   * - 2
+     - 5
+   * - 4
+     - 16
+   * - 8
+     - 58
+   * - 16
+     - 218
+
+
+=============================
+Moving TurtleBot
+=============================
+
+We are providing a sample file random_walk.py that you can inspect and run to see how the system works. It can found at ~/catkin_ws/src/search/scripts/
+
+Test your setup using the following steps with the random-walk example. 
+
+#. On a terminal, run roscore.
+
+	.. code-block:: bash
+
+		roscore
+
+#. In a new terminal session, run the server file (located at ~/catkin_ws/src/search/scripts/server.py). Use the arguments to provide size of the grid, number of obstacles and random seed. 
+
+	.. code-block:: bash
+
+		rosrun search server.py
+
+	Use -- help option to see how to pass arguments to the server.
+
+	.. code-block:: bash
+
+		$ rosrun search server.py --help
+		usage: server.py [-h] [-d 5] [-n 15] [-s 32]
+
+		optional arguments:
+		  -h, --help  show this help message and exit
+		  -d 5        for providing dimension of the grid
+		  -n 15       for providing no. of obstacles to be added in the grid
+		  -s 32       for providing random seed
+
+#. Launch the maze in a new terminal.
+
+	.. code-block:: bash
+
+		roslaunch search maze.launch
+
+#. Run the move_tbot3.py file in a new terminal. It enables the movement of TurtleBot3.
+
+	.. code-block:: bash
+
+		rosrun search move_tbot3.py
+
+#. Run the random_walk.py file in a new terminal.
+
+	.. code-block:: bash
+
+		rosrun search random_walk.py
+
+
+==================================
+Implementing Search Algorithms
+==================================
+
+#. Modify the search methods in search_algorithms.py located at ~/catkin_ws/src/search/scripts/. We have provided a basic template where you should write your code. You can inspect random_walk.py as mentioned in the previous section to see how to make changes to search_algorithms.py.
+
+#. Do not modify any other file. Make all the changes you need in search_algorithms.py only.
+
+#. **Modifying search_algorithm.py**: 
+	* Do not modify the function signature of existing methods.
+	* Do not modify the return statements at the end of existing methods.
+	* You can create your own methods inside the file.
+	* Which methods to modify? bfs(), ucs(), gbfs(), astar()
+	* Each of these four method returns **action_list**, the list of actions that TurtleBot has to perform to reach from initial state to goal state. 
+		.. note ::
+			A sample list can look like ['MoveF', 'TurnCW', 'MoveF', 'TurnCCW', 'MoveB', 'TurnCCW', 'MoveF']. This list will be empty if there is no path from intial state to goal state.
+
+
+
+#. Use the following helper functions defined in ~/catkin_ws/src/search/scripts/problem.py. 
+
+	* get_initial_state() -- Returns the initial state of the turtlebot.
+	* get_goal_state() -- Returns the goal state for the TurtleBot.
+	* is_goal_state(curr_state) -- Returns if curr_state is the goal state or not.
+	* get_actions() -- Returns the list of all actions that the TurtleBot can perform. Keep in mind that not all of them may be executable from the curr_state.
+	* get_successor(curr_state) -- Returns an ordered dictionary of actions {action_i : (state_i, cost_i)} such that applying action_i on curr_state results in state_i and it incurs a cost cost_i.
+
+	.. warning::
+		Break ties during expansion in the order of dictionary elements returned by get_successor(). Since this is an ordered dictionary, the order will be preserved unlike normal python dictionary.
+
+		Example:
+			Assume that a call to get_successor(initial_state) returns {a1: (s1, 2), a2: (s2, 2)}. Now we have 2 nodes in fringe with equal cost, so we will choose **a1** for expansion as it appears before a2 in the dictionary. 
+
+	To see how each of them work, visit `API -> Class Helper <#class-helper>`_  on the left hand panel.
+
+#. You can use external APIs for data structures like stack, queue, priority queue, etc.
+
+#. You can implement your own Manhattan Distance Heuristic function, or you can use the function given in server.py.
+
+==================================
+Testing Search Algorithms
+==================================
+
+#. On a terminal, run roscore.
+
+	.. code-block:: bash
+
+		roscore
+
+#. In a new terminal session, run the server file (located at ~/catkin_ws/src/search/scripts/server.py). Use the arguments to provide size of the grid, number of obstacles and random seed. 
+
+	.. code-block:: bash
+
+		rosrun search server.py
+
+	Use -- help option to see how to pass arguments to the server.
+
+	.. code-block:: bash
+
+		$ rosrun search server.py  --help
+		usage: server.py [-h] [-d 5] [-n 15] [-s 32]
+
+		optional arguments:
+		  -h, --help  show this help message and exit
+		  -d 5        for providing dimension of the grid
+		  -n 15       for providing no. of obstacles to be added in the grid
+		  -s 32       for providing random seed
+
+#. Launch the maze in a new terminal.
+
+	.. code-block:: bash
+
+		roslaunch search maze.launch
+
+#. Run the move_tbot3.py file in a new terminal. It enables the movement of TurtleBot3.
+
+	.. code-block:: bash
+
+		rosrun search move_tbot3.py
+
+#. Run the search_algorithm.py file in a new terminal with suitable argument (bfs, ucs, gbfs, astar).
+
+	.. code-block:: bash
+
+		rosrun search search_algorithm.py -a <algorithm_name>
+
+	
+	Use -- help option to see how to pass arguments to search_algorithm.py script. To use a custom heuristic function with gbfs or astar, pass the flag -c. No value is needed.
+
+	.. code-block:: bash
+
+		$ rosrun search search_algorithm.py --help
+		usage: search_algorithm.py [-h] [-a bfs] [-c]
+
+		optional arguments:
+		  -h, --help  show this help message and exit
+		  -a bfs      Please mention algorithm to use. Possible arguments = {bfs, ucs,
+		              gbfs, astar}. Default value is bfs.
+		  -c          Use custom heuristic function
+  
+  .. note ::
+  	Passing -c to search_algorithm.py sets a flag "custom_heuristic" to True. In gbfs() or astar() methods, check this flag's value to call the correct heuristic function.
+
+  	.. code-block:: python
+
+  		if custom_heuristic == True:
+  		  # use your custom heuristic function
+  		else:
+  		  # use Manhattan heuristic function 
+
+=============================
+Tips and Suggestions
+=============================
+
+#. Test your algorithm with smaller grid or smaller number of obstacles to see if it works as expected.
+
+#. Kill the launched servers and nodes and restart from step 2 onwards when you start a new run so that the Turtlebot3 is reset to its initial state. This will also be useful when you collect data to plot the graphs.
+
+#. Since the obstacles and mazes are generated dynamically, sometimes it is possible that there is no path from initial state to goal state. If your algorithm returned empty action_list, check once if there is path from initial state to goal state.
+
+#. Sometimes the robot starts diverging from the path and starts rotating very fast. This is caused by a bug that we are trying to resolve. Please kill the launched servers and nodes and restart from step 2 onwards if you notice such an issue. 
+
+#. Remember to source the setup.bash file in each of the new terminal you start.
+
+	.. code-block:: bash
+
+		source ~/catkin_ws/devel/setup.bash
+
+#. At times, the TurtleBot takes some time to perform an action, so wait for some time if no movement is visible.
+
+#. Check the discussion page on Canvas to see if the problem you are facing is already answered. If not, start a new discussion.
+
+
+API
+=============================
+
+====================================================
+class State
+====================================================
+.. moduleauthor:: AAIR Lab, ASU <aair.lab@asu.edu>
+
+.. automodule:: problem
+	:noindex:
+
+.. autoclass:: State
+   :members:
+
+====================================================
+class Helper
+====================================================
+.. moduleauthor:: AAIR Lab, ASU <aair.lab@asu.edu>
+
+.. automodule:: problem
+	:noindex:
+
+.. autoclass:: Helper
+   :members:
+
